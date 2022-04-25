@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="mt-4 col-lg-12 mb-2 d-flex justify-content-between">
+        <div class="pull-left">
+            <h2> Show Product</h2>
+        </div>
+        <div class="pull-right">
+            <a class="btn btn-primary" href="/products"> Back</a>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
+            <strong>Name:</strong>
+            {{ product.name }}
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
+            <strong>Details:</strong>
+            {{ product.details }}
+        </div>
+    </div>
+</div>
+{% endblock %}
