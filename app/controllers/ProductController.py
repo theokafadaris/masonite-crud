@@ -46,9 +46,9 @@ class ProductController(Controller):
         product.name = request.input('name')
         product.details = request.input('details')
         product.save()
-        response.redirect('/products/edit/{}'.format(request.input('id')))
+        return response.redirect('/products')
 
     def delete(self, request: Request, response: Response):
         product = Product.where('id', request.param('product_id')).first()
         product.delete()
-        response.redirect('/products')
+        return response.redirect('/products')
