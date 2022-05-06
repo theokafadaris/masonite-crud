@@ -11,17 +11,7 @@
         </div>
     </div>
 </div>
-@if session().has('errors'):
-<div class="text-danger">
-        <ul>
-            @for key, error_list in session().get('errors').items():
-                @for error in error_list
-                    <li>{{ error }}</li>
-                @endfor
-            @endfor
-        </ul>
-</div>
-@endif
+
 <form action="/products/update" method="POST">
     {{ csrf_field }}
 
@@ -32,12 +22,22 @@
                 <strong>Name:</strong>
                 <input type="text" name="name" value="{{product.name}}" class="form-control" placeholder="Name">
             </div>
+            @if errors.has('name')
+            <div class="text-danger"> 
+                <code>{{ errors.get('name')[0] }}</code>
+            </div>
+            @endif
         </div>
         <div class="mb-2 col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Detail:</strong>
                 <textarea class="form-control" style="height:150px"  name="details" placeholder="Detail">{{product.details}}</textarea>
             </div>
+            @if errors.has('details')
+            <div class="text-danger"> 
+                <code>{{ errors.get('details')[0] }}</code>
+            </div>
+            @endif
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-primary">Submit</button>

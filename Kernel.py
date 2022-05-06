@@ -7,6 +7,7 @@ from masonite.utils.location import base_path
 from masonite.middleware import (
     SessionMiddleware,
     EncryptCookies,
+    ShareErrorsInSessionMiddleware,
     LoadUserMiddleware,
     MaintenanceModeMiddleware,
 )
@@ -22,7 +23,7 @@ class Kernel:
     http_middleware = [MaintenanceModeMiddleware, EncryptCookies]
 
     route_middleware = {
-        "web": [SessionMiddleware, LoadUserMiddleware, VerifyCsrfToken],
+        "web": [SessionMiddleware, LoadUserMiddleware, VerifyCsrfToken, ShareErrorsInSessionMiddleware],
         "auth": [AuthenticationMiddleware],
     }
 

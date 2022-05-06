@@ -11,11 +11,7 @@
         </div>
     </div>
 </div>
-@if session().has('errors'):
-{% set errors = session().get('errors') %}
-@else
-{% set errors = {} %}
-@endif
+
 <form action="/products" method="POST">
     {{ csrf_field }}
 
@@ -25,18 +21,22 @@
                 <strong>Name:</strong>
                 <input type="text" name="name" class="form-control" placeholder="Name">
             </div>
-            <div class="text-danger">
-                {{errors['name']|join}}
+            @if errors.has('name')
+            <div class="text-danger"> 
+                <code>{{ errors.get('name')[0] }}</code>
             </div>
+            @endif
         </div>
         <div class="mb-2 col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Detail:</strong>
                 <textarea class="form-control" style="height:150px" name="details" placeholder="Detail"></textarea>
             </div>
-            <div class="text-danger">
-                {{errors['details']|join}}
+            @if errors.has('details')
+            <div class="text-danger"> 
+                <code>{{ errors.get('details')[0] }}</code>
             </div>
+            @endif
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-primary">Submit</button>
