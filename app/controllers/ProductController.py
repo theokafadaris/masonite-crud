@@ -25,7 +25,7 @@ class ProductController(Controller):
             name=request.input('name'),
             details=request.input('details')
         )
-        response.redirect('/products')
+        return response.redirect('/products')
     
     def show(self, view: View, request: Request):
         product = Product.where('id', request.param('product_id')).first()
