@@ -14,6 +14,7 @@
     <th>No</th>
     <th>Name</th>
     <th>Details</th>
+    <th>Photo</th>
     <th width="280px">Action</th>
   </tr>
   @for product in products
@@ -21,6 +22,9 @@
     <td>{{product.id}}</td>
     <td>{{product.name}}</td>
     <td>{{product.details}}</td>
+    <td>
+      <img src="/{{ product.image }}" width="100px" height="100px">
+    </td>
     <td>
       <form action="" method="POST">
         <a class="btn btn-info" href="/products/show/{{product.id}}">Show</a>

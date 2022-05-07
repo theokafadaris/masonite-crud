@@ -12,6 +12,7 @@ class CreateProductsTable(Migration):
             table.increments("id")
             table.string("name")
             table.text("details")
+            table.string("image")
             table.timestamps()
 
     def down(self):

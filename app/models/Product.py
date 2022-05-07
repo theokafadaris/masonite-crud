@@ -4,6 +4,6 @@ from masoniteorm.models import Model
 
 
 class Product(Model):
-    __fillable__ = ['name', 'details']
+    __fillable__ = ['name', 'details', 'image']
 
     
