@@ -1,4 +1,7 @@
 {% extends "base.html" %}
+{% block head %}
+<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+{% endblock %}
 
 {% block content %}
 <div class="row">
@@ -30,7 +33,7 @@
         <div class=" col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Detail:</strong>
-                <textarea class="form-control" style="height:150px" name="details" placeholder="Detail"></textarea>
+                <textarea class="tinymce-editor" style="height:150px" name="details" ></textarea>
             </div>
             @if errors.has('details')
             <div class="text-danger"> 
@@ -55,4 +58,24 @@
     </div>
    
 </form>
+{% endblock %}
+{% block script %}
+<script type="text/javascript">
+    tinymce.init({
+    selector: 'textarea.tinymce-editor',
+    placeholder: 'Type here...',
+    height: 300,
+    menubar: false,
+    plugins: [
+        'advlist autolink lists link image charmap print preview anchor',
+        'searchreplace visualblocks code fullscreen',
+        'insertdatetime media table paste code help wordcount', 'image'
+    ],
+    toolbar: 'undo redo | formatselect | ' +
+        'bold italic backcolor | alignleft aligncenter ' +
+        'alignright alignjustify | bullist numlist outdent indent | ' +
+        'removeformat | help',
+    content_css: '//www.tiny.cloud/css/codepen.min.css'
+});
+</script>
 {% endblock %}

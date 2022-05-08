@@ -21,7 +21,7 @@
   <tr>
     <td>{{product.id}}</td>
     <td>{{product.name}}</td>
-    <td>{{product.details}}</td>
+    <td>{{product.details | safe}}</td>
     <td>
       <img src="/{{ product.image }}" width="100px" height="100px">
     </td>

@@ -53,7 +53,7 @@ class ProductController(Controller):
         if errors:
             return response.redirect('/products/edit/{}'.format(request.input('id'))).with_errors(errors)
         product = Product.where('id', request.input('id')).first()
-        if request.input('image'):
+        if request.input('image').name:
             path = storage.disk('local').put_file('public', request.input('image'))
             product.image = path
         product.name = request.input('name')
